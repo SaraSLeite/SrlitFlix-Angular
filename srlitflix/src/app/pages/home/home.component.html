@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div class="container-fluid p-0">
+<div id="carouselBanner" class="carousel slide crousel-fade" data-bs-ride="carousel">
+     <div class="carousel-inner">
+ 
+        <div class="carousel-item" *ngFor="let b of bannerResults; let i = index"
+        [ngClass]="{active:i===0}" data-bs-interval="8000"
+        >
+            <img src="https://image.tmdb.org/t/p/original/{{b.backdrop_path}}"
+            class="d-block w-100" alt="Capa de Mídia">
+            <div class="carousel-caption">
+            <h3>{{b.title ?? b.name}}</h3>
+            <p class=" d-md-block">{{b.overview }}</p>
+            </div>
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

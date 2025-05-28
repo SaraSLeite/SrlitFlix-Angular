@@ -23,4 +23,23 @@ export class MovieApiService {
     return this.http.get(`${this.baseUrl}/trending/all/week?language=pt-br`, this.options);
   }
 
+ // Filmes em destaque do Dia 
+  trendingMovieApiData() : Observable<any>{
+    return this.http.get(`${this.baseUrl}/trending/movie/day?language=pt-br`, this.options)
+  }
+ // Series em destaque do Dia 
+  trendingSerieApiData() : Observable<any>{
+    return this.http.get(`${this.baseUrl}/trending/tv/day?language=pt-br`, this.options)
+  }
+  
+ // Filmes de ações mais populares
+  popularActionMovieApiData() : Observable<any>{
+    return this.http.get(`${this.baseUrl}/discover/movie?language=pt-br&with_genres=28&sort_by=popularity.desc`, this.options)
+  }
+ // Filmes de terror mais populares
+  popularTerrorMovieApiData() : Observable<any>{
+    return this.http.get(`${this.baseUrl}/discover/movie?language=pt-br&with_genres=27&sort_by=popularity.desc`, this.options)
+  }
+
+
 }

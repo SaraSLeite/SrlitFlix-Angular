@@ -33,4 +33,37 @@
     }
 } 
 
- 
+.rowposter {
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    cursor: default;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;    
+    will-change: transform;
+}
+
+.rowposter a {
+    cursor: pointer;
+}
+
+.rowposter::-webkit-scrollbar{
+    display: none;
+}
+
+.rowposter a img{
+    margin-right: 10px;
+    border-radius: 20px;
+    box-sizing: content-box;
+    transition: transform 450ms;
+    max-height: 300px;
+    object-fit: contain;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.rowposter a img:hover{
+    transform: scale(1.12);
+    z-index: 900;
+}

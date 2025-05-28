@@ -1,5 +1,5 @@
 <div class="container-fluid p-0">
-<div id="carouselBanner" class="carousel slide crousel-fade" data-bs-ride="carousel">
+<div id="carouselBanner" class="carousel slide carousel-fade" data-bs-ride="carousel">
      <div class="carousel-inner">
  
         <div class="carousel-item" *ngFor="let b of bannerResults; let i = index"
@@ -23,4 +23,15 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+</div>
+
+<div class="container my-5">
+  <div class="row mb-5">
+    <h4 class="text-white">Filmes de Destaque</h4>
+    <div class="rowposter mt-1" #trendingMovies autoScroll>
+      <a href="#" *ngFor="let m of trendingMovieResults">
+        <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path}}" alt="Capa dos Filmes">
+      </a>
+    </div>
+  </div>  
 </div>

@@ -4,12 +4,13 @@
 
 #carouselBanner .carousel-item img {
     height: 100vh;
-    object-fit:  cover;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .carousel-inner .carousel-caption {
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);    
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     width: 100%;
     left: 0;
     padding-left: 100px;
@@ -18,12 +19,12 @@
 
 .carousel-inner .carousel-caption h3 {
     color: #e50914;
-    font-weight:  bolder;
+    font-weight: bolder;
     font-size: 32px;
 }
 
 @media only screen and (max-width: 500px) {
-    .carousel-inner .carousel-caption{
+    .carousel-inner .carousel-caption {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -31,16 +32,16 @@
     .carousel-inner .carousel-caption h3 {
         font-size: 20px;
     }
-} 
+}
 
 .rowposter {
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;
     cursor: default;
     padding: 20px;
-    -webkit-overflow-scrolling: touch;    
+    -webkit-overflow-scrolling: touch;
     will-change: transform;
 }
 
@@ -48,11 +49,11 @@
     cursor: pointer;
 }
 
-.rowposter::-webkit-scrollbar{
+.rowposter::-webkit-scrollbar {
     display: none;
 }
 
-.rowposter a img{
+.rowposter a img {
     margin-right: 10px;
     border-radius: 20px;
     box-sizing: content-box;
@@ -63,7 +64,7 @@
     transform: translateZ(0);
 }
 
-.rowposter a img:hover{
+.rowposter a img:hover {
     transform: scale(1.12);
     z-index: 900;
 }

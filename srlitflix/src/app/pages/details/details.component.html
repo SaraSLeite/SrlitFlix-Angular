@@ -16,4 +16,50 @@
             </button>
         </div>
     </div>
+
+    <div class="row my-5 text-white">
+    <h3 class="my-3">Vídeos</h3>
+    <div class="col" *ngIf="trailers.length == 0">
+        <h3 class="text-center my-5">Sem vídeos disponíveis</h3>
+    </div>
+    <div id="carouselVideos" class="carousel slide"*ngIf="trailers.length > 0">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselVideos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselVideos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselVideos" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let t of trailers; let i = index" [ngClass]="{active:i===0}">
+            <iframe [src]="getSafeUrl(t.key)" class="d-block w-100 rounded-5" height="500"></iframe>
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="mb-0">{{t.name}} - Publicado em: {{t.published_at | date: 'dd/MM/yyyy'}}</h5>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselVideos" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselVideos" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="row my-5 text-white">
+        <h3 class="mt-5">Elenco</h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            <div class="col" *ngFor="let c of cast">
+                <div class="card" routerLink="/person/{{c.id}}">
+                    <img [src]="c.profile_path ? 'https://image.tmdb.org/t/p/w500/' + c.profile_path : '/img/no-photo-cast.png' " class="card-img-top" alt="{{c.original_name}}">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">{{c.original_name}}</h5>
+                      <p class="card-text">{{c.character}}</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
 </div>

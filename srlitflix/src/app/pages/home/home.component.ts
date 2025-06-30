@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor (private service: MovieApiService) {}
+  constructor(private service: MovieApiService) { }
 
   bannerResults: any = [];
   trendingMovieResults: any = [];

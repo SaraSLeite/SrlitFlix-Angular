@@ -16,7 +16,7 @@ export class DetailsComponent {
     private service: MovieApiService,
     private router: ActivatedRoute,
     private sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   media: any;
   trailers: any = [];
@@ -30,20 +30,16 @@ export class DetailsComponent {
 
   getMedia(type: any, id: any) {
     this.service.mediaDetails(type, id).subscribe((result) => {
-      //console.log(result);
       this.media = result;
-    });
+    })
 
     this.service.mediaTrailers(type, id).subscribe((result) => {
-      //console.log(result);
       this.trailers = result.results;
-    });
-
+    })
+    
     this.service.mediaCast(type, id).subscribe((result) => {
-      //console.log(result);
       this.cast = result.cast;
-    });
-
+    })
   }
 
   getSafeUrl(key: string): SafeResourceUrl {

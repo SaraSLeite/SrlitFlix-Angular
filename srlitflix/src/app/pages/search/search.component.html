@@ -1,1 +1,32 @@
-<p>search works!</p>
+<div class="container my-5 py-5 px-lg-5 px-3">
+    <form id="pesquisar" class="d-flex position-relative" (submit)="onSearch()">
+        <input type="text" name="search" placeholder="Pesquisar..." [(ngModel)]="searchQuery">
+        <button class="position-absolute">
+            <i class="bi bi-search"></i>
+        </button>
+    </form>
+
+    <h5 id="qtdeResultados" class="text-white my-4" *ngIf="result">
+        Resultados Encontrados ({{result.total_results}})
+    </h5>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="result">
+        <div class="col" *ngFor="let r of resultsList">
+            <div class="card" routerLink="/details/{{r.media_tye}}//{{r.id}}">
+                <img alt="{{ r.title ?? r.name }}" class="card-img-top"
+                    [src] = "r.poster_path ? 'https://image.tmdb.org/t/p/w500/' + r.poster_path : '/img/no-poster.png'"
+                >
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ r.title ?? r.name }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="currentPage < totalPages">
+        <div class="col text-center my-5">
+            <button class="btn btn-lg btn-danger text-white px-5 rounded-5" (click)="loadMore()">
+                Exibir Mais
+            </button>
+        </div>
+    </div>
+</div>

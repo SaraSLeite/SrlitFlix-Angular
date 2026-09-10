@@ -1,12 +1,12 @@
 Configuração do GIT:
-git config --global user.name SaraSLeite@gmail.com
+git config --global user.name SaraSLeite
 git config --global user.email saraleite2708@gmail.com
 
 Criar um projeto:
 ng new Srlitflix
 
 Executar o projeto:
-cd Srlitflix
+cd srlitflix
 ng serve -o
 
 Criar novos componentes:

@@ -12,7 +12,7 @@
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="result">
         <div class="col" *ngFor="let r of resultsList">
-            <div class="card" routerLink="/details/{{r.media_tye}}//{{r.id}}">
+            <div class="card" routerLink="/details/{{r.media_type}}//{{r.id}}">
                 <img alt="{{ r.title ?? r.name }}" class="card-img-top"
                     [src] = "r.poster_path ? 'https://image.tmdb.org/t/p/w500/' + r.poster_path : '/img/no-poster.png'"
                 >

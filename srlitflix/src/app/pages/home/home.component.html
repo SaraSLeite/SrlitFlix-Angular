@@ -36,16 +36,29 @@
         <h4 class="text-white">Séries em Destaque</h4>
         <div class="rowposter mt-1" #trendingSeries autoScroll>
             <a routerLink="/details/{{m.media_type}}/{{m.id}}" *ngFor="let m of trendingSerieResults">
-                <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa do Filme">
+                <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa da Série">
             </a>
         </div>
     </div>
 
     <div class="row mb-5">
-        <h4 class="text-white">Filmes de Ações mais Populares</h4>
-        <div class="rowposter mt-1" #popularActionMovie autoScroll>
-            <a routerLink="/details/movie/{{m.id}}" *ngFor="let m of popularActionMovieResults">
-                <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa do Filme">
+        <h4 class="text-white">Filmes Recomendados para Você</h4>
+
+        <div class="rowposter mt-1" autoScroll>
+            <a [routerLink]="['/details', m.media_type, m.id]" *ngFor="let m of recommendedMovieResults">
+
+                <img src="https://image.tmdb.org/t/p/w500/{{m.poster_path}}" alt="Capa">
+            </a>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <h4 class="text-white">Séries Recomendadas para Você</h4>
+
+        <div class="rowposter mt-1" autoScroll>
+            <a [routerLink]="['/details', m.media_type, m.id]" *ngFor="let m of recommendedSeriesResults">
+
+                <img src="https://image.tmdb.org/t/p/w500/{{m.poster_path}}" alt="Capa">
             </a>
         </div>
     </div>

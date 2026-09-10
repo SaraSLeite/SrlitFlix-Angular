@@ -4,7 +4,16 @@
             <img src="https://image.tmdb.org/t/p/w500/{{media.poster_path}}" alt="Foto de Capa" class="w-100 rounded-5">
         </div>
         <div class="col-md-8 text-white" id="detalhes">
-            <h1 class="fs-1 text-danger">{{media.title ?? media.name}}</h1>
+            <h1 class="fs-1 text-danger">{{media.title ?? media.name}}
+                <button class="favorite-btn" (click)="toggleFavorite()"
+                    [attr.aria-label]="isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
+                    [attr.title]="isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
+
+                    <i class="bi" [ngClass]="isFavorite ? 'bi-heart-fill' : 'bi-heart'">
+                    </i>
+
+                </button>
+            </h1>
             <h4 class="mb-4 fw-bold">Título Original: {{media.original_title ?? media.original_name}}</h4>
             <p class="mb-3">Data de Estreia: {{ (media.release_date ?? media.last_air_date) | date: 'dd/MM/yyyy' }}</p>
             <p class="mb-3">País de Origem: {{ media.origin_country}}</p>
@@ -47,7 +56,8 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
             <div class="col" *ngFor="let c of cast">
                 <div class="card" routerLink="/person/{{c.id}}">
-                    <img [src]="c.profile_path ? 'https://image.tmdb.org/t/p/w500/' + c.profile_path : '/img/no-photo-cast.png' " class="card-img-top" alt="{{c.original_name}}">
+                    <img [src]="c.profile_path ? 'https://image.tmdb.org/t/p/w500/' + c.profile_path : '/img/no-photo-cast.png' "
+                        class="card-img-top" alt="{{c.original_name}}">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{c.original_name}}</h5>
                         <p class="card-text">{{c.character}}</p>
@@ -56,5 +66,22 @@
             </div>
         </div>
     </div>
-
+    <section class="recommendations" *ngIf="recommendedResults.length > 0">
+        <h2>Recomendações para você</h2>
+        <div class="recommendations-container">
+            <a *ngFor="let item of recommendedResults" [routerLink]="['/details', item.media_type, item.id]"
+                class="recommendation-card">
+                <img *ngIf="item.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + item.poster_path"
+                    [alt]="item.title || item.name">
+                <div class="recommendation-info">
+                    <h3>
+                        {{ item.title || item.name }}
+                    </h3>
+                    <span>
+                        {{ item.media_type === 'movie' ? 'Filme' : 'Série' }}
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
 </div>

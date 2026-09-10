@@ -6,10 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MovieApiService {
-
-  constructor(private http: HttpClient) { }
+  recommendationsByHistory(history: any) {
+    throw new Error('Method not implemented.');
+  }
+  popularHorrorSerieData() {
+    throw new Error('Method not implemented.');
+  }
 
   baseUrl = 'https://api.themoviedb.org/3';
+
+  constructor(private http: HttpClient) { }
   options = {
     method: 'GET',
     headers: {
@@ -33,10 +39,29 @@ export class MovieApiService {
     return this.http.get(`${this.baseUrl}/trending/tv/day?language=pt-br`, this.options)
   }
 
-  // Filmes de Ação mais Populares
-  popularActionMovieApiData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/discover/movie?language=pt-br&with_genres=28&sort_by=popularity.desc`, this.options)
-  }
+  // Séries de Terror mais Populares
+popularHorrorSerieApiData(): Observable<any> {
+  return this.http.get(
+    `${this.baseUrl}/discover/tv?language=pt-br&with_genres=27&sort_by=popularity.desc`,
+    this.options
+  );
+}
+
+// Filmes por gênero
+popularMoviesByGenre(genreId: number): Observable<any> {
+  return this.http.get(
+    `${this.baseUrl}/discover/movie?language=pt-br&with_genres=${genreId}&sort_by=popularity.desc`,
+    this.options
+  );
+}
+
+// Séries por gênero
+popularSeriesByGenre(genreId: number): Observable<any> {
+  return this.http.get(
+    `${this.baseUrl}/discover/tv?language=pt-br&with_genres=${genreId}&sort_by=popularity.desc`,
+    this.options
+  );
+}
 
   // Detalhes do Filme ou Série
   mediaDetails(type: any, value: any): Observable<any> {
